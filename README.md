@@ -1,0 +1,2 @@
+# base
+FreeBSD Base Jail
