@@ -12,6 +12,8 @@ ARG DNS1="1.1.1.1"
 ARG DNS2="8.8.8.8"
 
 # --- Paket esensial ---
+CMD sed -e "s|quarterly|latest|g" -i.bak /etc/pkg/FreeBSD.conf
+
 PKG ca_root_nss tzdata bash curl wget rsync
 
 # --- Timezone ---
@@ -25,7 +27,7 @@ LINE_IN_FILE "options edns0" /etc/resolv.conf
 
 # --- Matikan layanan tidak perlu ---
 SYSRC syslogd_flags="-ss"
-SYSRC sendmail_enable="NONE"
+SYSRC sendmail_enable="NO"
 SYSRC sendmail_submit_enable="NO"
 SYSRC sendmail_outbound_enable="NO"
 SYSRC sendmail_msp_queue_enable="NO"
