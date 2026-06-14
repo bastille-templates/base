@@ -1,29 +1,7 @@
-# =============================================================
-# TEMPLATE: base
-# Deskripsi : Fondasi dasar jail — keamanan minimal, timezone,
-#             resolver, dan pembersihan layanan tak perlu.
-# Di-INCLUDE oleh semua template lain dalam proyek ini.
-# Gunakan: bastille template TARGET base
-#          [--arg TIMEZONE=Asia/Jakarta]
-# =============================================================
-
-ARG TIMEZONE="Asia/Jakarta"
-ARG DNS1="1.1.1.1"
-ARG DNS2="8.8.8.8"
-
-# --- Paket esensial ---
+# ---  esensial ---
 CMD sed -e "s|quarterly|latest|g" -i.bak /etc/pkg/FreeBSD.conf
 
-PKG ca_root_nss tzdata bash curl wget rsync
-
-# --- Timezone ---
-CMD ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
-CMD echo "${TIMEZONE}" > /etc/timezone
-
-# --- DNS resolver ---
-LINE_IN_FILE "nameserver ${DNS1}" /etc/resolv.conf
-LINE_IN_FILE "nameserver ${DNS2}" /etc/resolv.conf
-LINE_IN_FILE "options edns0" /etc/resolv.conf
+PKG ca_root_nss bash curl wget rsync
 
 # --- Matikan layanan tidak perlu ---
 SYSRC syslogd_flags="-ss"
