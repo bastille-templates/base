@@ -1,0 +1,1 @@
+FreeBSD-kmods: { url: "pkg+https://pkg.FreeBSD.org/${ABI}/kmods_latest_${VERSION_MINOR}", enabled: yes }

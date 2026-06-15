@@ -1,9 +1,18 @@
 # base
 
-FreeBSD Base Jail
+Bastille Template: cedwards/repo-latest
 
 ```sh
-bastille create target 14.1-RELEASE YourIP-Bastille
-bastille bootstrap https://github.com/bastille-templates/base
-bastille template target bastille-templates/base
+.
+├── Bastillefile
+├── LICENSE
+├── README.md
+└── usr
+    └── local
+        └── etc
+            └── pkg
+                └── repos
+                    └── FreeBSD.conf
+
+6 directories, 4 files
 ```

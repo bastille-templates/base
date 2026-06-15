@@ -1,7 +1,5 @@
-# ---  esensial ---
-CMD sed -e "s|quarterly|latest|g" -i.bak /etc/pkg/FreeBSD.conf
-
-PKG ca_root_nss bash curl wget rsync
+# --- esensial ---
+CP usr /
 
 # --- Matikan layanan tidak perlu ---
 SYSRC syslogd_flags="-ss"
